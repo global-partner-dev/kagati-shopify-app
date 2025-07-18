@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyGiftCard [
+  where shopId == $session.shopId
+]

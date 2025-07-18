@@ -1,0 +1,68 @@
+{
+  "name": "kaghati-shopify-v4",
+  "version": "0.1.0",
+  "description": "Internal package for Gadget app kaghati-shopify-v4 (Development environment)",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "vite:build": "NODE_ENV=production vite build",
+    "shopify": "shopify",
+    "build": "NODE_ENV=production vite build",
+    "dev": "shopify app dev",
+    "info": "shopify app info",
+    "generate": "shopify app generate",
+    "deploy": "shopify app deploy"
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.0.0",
+    "@gadget-client/kaghati-ramraj-19may02": "link:.gadget/client",
+    "@gadget-client/kaghati-shopify-v3-2": "link:.gadget/client",
+    "@gadget-client/kaghati-shopify-v4": "link:.gadget/client",
+    "@gadgetinc/react": "^0.18.5",
+    "@gadgetinc/react-shopify-app-bridge": "^0.16.6",
+    "@react-google-maps/api": "^2.19.3",
+    "@shopify/app": "^3.58.2",
+    "@shopify/app-bridge": "3.7.10",
+    "@shopify/app-bridge-react": "4.1.5",
+    "@shopify/polaris": "^12.0.0",
+    "@shopify/polaris-icons": "^8.1.0",
+    "apexcharts": "^3.41.0",
+    "axios": "^1.7.2",
+    "csv-parse": "^5.5.6",
+    "date-fns": "^3.6.0",
+    "gadget-server": "link:.gadget/server",
+    "got": "^14.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "node-pushnotifications": "^3.1.1",
+    "papaparse": "^5.4.1",
+    "react": "^18.2.0",
+    "react-apexcharts": "^1.4.1",
+    "react-dom": "^18.2.0",
+    "react-lazyload": "^3.2.1",
+    "react-router-dom": "6.15.0",
+    "react-toastify": "11.0.3",
+    "sha256": "^0.2.0",
+    "shopify-api-node": "^3.12.6",
+    "smtp-client": "^0.4.0",
+    "uniqid": "^5.4.0",
+    "use-sound": "^5.0.0",
+    "uuid": "^9.0.1",
+    "web-push": "^3.6.7",
+    "ws": "^8.18.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.4",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react-swc": "3.2.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9"
+  },
+  "workspaces": [
+    "extensions/*"
+  ],
+  "trustedDependencies": [
+    "@shopify/plugin-cloudflare"
+  ]
+}

@@ -1,0 +1,68 @@
+.notification-dropdown {
+  position: relative;
+}
+
+.notification-dropdown-trigger {
+  position: relative;
+  border: 0;
+  cursor: pointer;
+  transition: background-color var(--p-motion-duration-100);
+  color: rgba(227, 227, 227, 1);
+  padding: 0.375rem;
+  background-color: rgba(48, 48, 48, 1);
+  border-radius: 0.5rem;
+  min-width: auto;
+  /* gap: 8px; */
+}
+
+.notification-dropdown-trigger:hover,
+.notification-dropdown-trigger:focus-visible {
+  background-color: rgba(74, 74, 74, 1);
+}
+.notification-dropdown-trigger .Polaris-Badge {
+  display: flex;
+  position: absolute;
+  top: -9px;
+  right: -8px;
+
+  background-color: #de3618;
+  color: white;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  align-items: center;
+}
+
+.notification-dropdown-menu {
+  position: absolute;
+  top: 40px; /* Adjust based on your header height */
+  right: 0;
+  width: 300px;
+  max-height: 400px; /* Set max height for the dropdown */
+  overflow-y: auto; /* Enable scrolling */
+  background: #fff;
+  border: 1px solid #dfe3e8;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.notification-dropdown-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.notification-dropdown-menu::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.notification-dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+.dropdown-title {
+  padding: 12px 16px;
+  border-bottom: 1px solid #dfe3e8;
+  font-weight: bold;
+}
+

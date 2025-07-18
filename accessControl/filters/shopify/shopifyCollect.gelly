@@ -1,0 +1,4 @@
+fragment Filter($session: Session) on ShopifyCollect {
+  *
+  [where shop.id == $session.shopId]
+}

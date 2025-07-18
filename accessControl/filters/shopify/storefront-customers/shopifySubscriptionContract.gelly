@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifySubscriptionContract [
+  where customerId == $session.shopifyCustomerId
+]

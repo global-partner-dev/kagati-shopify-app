@@ -1,0 +1,91 @@
+/* Profile Button Styles */
+.profile-button {
+  color: rgba(227, 227, 227, 1);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: auto;
+  min-height: 2rem;
+  padding: 0.125rem;
+  border: 0;
+  cursor: pointer;
+  transition: background-color var(--p-motion-duration-100);
+  border-radius: 0.5rem;
+  background-color: rgba(48, 48, 48, 1);
+}
+.profile-button:hover {
+  outline: none;
+  background-color: rgba(74, 74, 74, 1);
+}
+
+.sr-only {
+  /* color: white;
+  margin-right: 6px;
+  align-self: center; */
+  max-width: 10rem;
+  margin-right: 0;
+  padding: 0 0.5rem 0 0.625rem;
+}
+.sr-only p {
+  font-size: var(--p-font-size-300);
+  line-height: var(--p-font-line-height-400);
+}
+/* Profile Image Styles */
+.profile-image-main {
+  height: 1.8rem;
+  width: 1.8rem;
+  border-radius: 5px;
+  background: rgba(253, 75, 146, 1);
+  color: rgba(255, 246, 248, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-image-main p {
+  font-size: 0.7rem !important;
+}
+/* Dropdown Menu Styles */
+.profile-menu-items {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  margin-top: 0.5rem;
+  width: 13rem; /* w-48 */
+  background-color: white;
+  border-radius: 0.375rem; /* rounded-md */
+  padding-top: 0.25rem; /* py-1 */
+  padding-bottom: 0.25rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 10px;
+}
+
+.profile-menu-items .menu-item {
+  color: black;
+  padding: 2px 10px;
+  text-decoration: none;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border:none;
+}
+
+.menu-item {
+  display: block;
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  font-size: 0.875rem; /* text-sm */
+  color: #374151; /* text-gray-700 */
+}
+
+.menu-item:hover,
+.menu-item:focus {
+  background-color: #f3f4f6; /* bg-gray-100 */
+}
+.notification-dropdown-inner {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Transition classes */
+/* You might need to use JavaScript to dynamically add these classes for animations */

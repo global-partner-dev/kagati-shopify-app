@@ -1,0 +1,34 @@
+/* Skeleton.css */
+@keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+  
+  .skeleton {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(to right, #f0f0f0 8%, #e0e0e0 18%, #f0f0f0 33%);
+    background-size: 1000px 100%;
+  }
+  
+  .SkeletonBodyText,
+  .SkeletonDisplayText {
+    display: inline-block;
+    width: 100%;
+    height: 1em;
+    margin: 0.5em 0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .SkeletonBodyText {
+    height: 1.2em;
+  }
+  
+  .SkeletonDisplayText {
+    height: 2em;
+  }

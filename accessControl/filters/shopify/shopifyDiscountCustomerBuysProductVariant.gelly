@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyDiscountCustomerBuysProductVariant [
+  where shopId == $session.shopId
+]

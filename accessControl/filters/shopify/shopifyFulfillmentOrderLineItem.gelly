@@ -1,0 +1,4 @@
+fragment Filter($session: Session) on ShopifyFulfillmentOrderLineItem {
+  *
+  [where shop.id == $session.shopId]
+}

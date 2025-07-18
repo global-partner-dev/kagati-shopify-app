@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifySellingPlan [
+  where shopId == $session.shopId
+]

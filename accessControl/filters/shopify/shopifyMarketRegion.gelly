@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyMarketRegion [
+  where shopId == $session.shopId
+]

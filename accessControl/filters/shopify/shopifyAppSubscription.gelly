@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyAppSubscription [
+  where shopId == $session.shopId
+]

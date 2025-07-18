@@ -1,0 +1,38 @@
+query RunInput {
+  cart {
+    storeDistance:attribute(key:"_storeDistance"){
+      value
+    }
+    hours:attribute(key:"_checkoutHour"){
+      value
+    }
+     cost {
+      subtotalAmount {
+        amount
+        currencyCode
+      }
+    }
+    deliveryGroups {
+      deliveryAddress {
+        provinceCode
+        zip
+      }
+      deliveryOptions {
+        handle
+        title
+        description
+        deliveryMethodType
+        cost {
+          amount
+          currencyCode
+        }
+        code
+      }
+    }
+  }
+  deliveryCustomization {
+    metafield(namespace: "delivery-customization", key: "function-configuration") {
+      value
+    }
+  }
+}

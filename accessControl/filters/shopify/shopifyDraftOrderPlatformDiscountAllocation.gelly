@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyDraftOrderPlatformDiscountAllocation [
+  where shop.id == $session.shopId
+]

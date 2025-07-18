@@ -1,0 +1,30 @@
+
+.viewIcon {
+    visibility: hidden;
+  }
+  
+  .indexTableRow:hover .viewIcon {
+    visibility: visible;
+  }
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    border-bottom: 1px solid #dfe3e8;
+  }
+  
+  .order-header > .Polaris-InlineStack {
+    width: 100%;
+  }
+  
+  .order-header .Polaris-InlineStack > .Polaris-BlockStack {
+    margin-left: auto; /* Pushes the block stack to the next line */
+  }
+  
+  .order-header .Polaris-Text:last-child {
+    margin-left: auto; /* Pushes the total to the right */
+    font-weight: bold;
+  }
+  
+  

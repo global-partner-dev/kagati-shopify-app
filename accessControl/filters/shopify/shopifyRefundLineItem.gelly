@@ -1,0 +1,4 @@
+fragment Filter($session: Session) on ShopifyRefundLineItem {
+  *
+  [where shop.id == $session.shopId]
+}

@@ -1,0 +1,57 @@
+.myCustomLeftMargin {
+    margin-left: 5px;
+}
+
+.myCustomBottomMargin {
+    margin-bottom: 10px;
+}
+
+.myCustomTopMargin {
+    margin-top: 10px;
+}
+
+.myCustomTopBottomMargin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.myCustomMargin {
+    margin: 0;
+}
+
+.myCustomIconView {
+    display: none;
+}
+
+.IndexTable-Cell:hover .myCustomIconView {
+    display: inline;
+}
+
+.myCustomTableCellWidth {
+    width: 30px;
+}
+
+.Polaris-Tabs__NewTab {
+    display: none;
+}
+
+.Polaris-Button--disclosure {
+    background-color: transparent;
+    box-shadow: 0px 0px 0px 0px transparent;
+}
+
+.Polaris-Button--disclosure .Polaris-Button[data-state="open"] {
+    background: transparent;
+    color: var(--pc-button-color_active);
+    box-shadow: 0px 0px 0px 0px transparent;
+}
+
+.Polaris-Button--disclosure .Polaris-Button:hover {
+    background: transparent;
+    color: var(--pc-button-color_active);
+    box-shadow: 0px 0px 0px 0px transparent;
+}
+
+.Polaris-Modal-Dialog__Modal {
+    max-width: 42rem;
+}

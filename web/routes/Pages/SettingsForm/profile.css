@@ -1,0 +1,35 @@
+.Polaris-LegacyCard {
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background-color: none !important;
+    position:none !important;
+}
+.shipping-zone-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #fff;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.country-flag svg {
+    width: 24px; /* Adjust based on your actual flag icon size */
+    height: auto;
+    margin-right: 10px;
+}
+
+.country-name {
+    flex-grow: 1;
+    margin-right: auto;
+}
+
+.country-price {
+    margin-right: 20px;
+}
+
+.more-options {
+    cursor: pointer;
+}

@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyPayout [
+  where shopId == $session.shopId
+]

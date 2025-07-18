@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifySellingPlanGroupProductVariant [
+  where shopId == $session.shopId
+]

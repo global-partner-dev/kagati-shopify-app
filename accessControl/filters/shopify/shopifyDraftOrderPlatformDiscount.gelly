@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyDraftOrderPlatformDiscount [
+  where shop.id == $session.shopId
+]

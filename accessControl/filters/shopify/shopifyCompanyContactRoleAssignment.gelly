@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyCompanyContactRoleAssignment [
+  where shopId == $session.shopId
+]

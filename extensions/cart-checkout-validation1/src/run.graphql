@@ -1,0 +1,23 @@
+query RunInput {
+  buyerJourney {
+    step
+  }
+  cart {
+    buyerIdentity {
+      customer {
+        numberOfOrders
+      }
+    }
+    cost {
+      subtotalAmount {
+        amount
+      }
+    }
+    deliveryGroups {
+      deliveryAddress {
+        zip
+        provinceCode
+      }
+    }
+  }
+}

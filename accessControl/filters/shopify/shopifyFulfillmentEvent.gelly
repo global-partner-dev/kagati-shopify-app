@@ -1,0 +1,4 @@
+fragment Filter($session: Session) on ShopifyFulfillmentEvent {
+  *
+  [where shop.id == $session.shopId]
+}

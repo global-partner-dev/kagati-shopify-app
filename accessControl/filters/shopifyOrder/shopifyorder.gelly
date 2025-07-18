@@ -1,0 +1,3 @@
+filter ($user: User, $session: Session) on ShopifyOrder [
+  where true
+]

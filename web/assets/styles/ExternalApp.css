@@ -1,0 +1,469 @@
+#root {
+  position: relative;
+}
+
+p {
+  font-size: 14px !important;
+}
+
+a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  width: 100vw;
+  height: calc(100vh - 80px);
+  /* background-image: url("./assets/default-background.svg"); */
+  /* left: 0; */
+  top: 80px;
+  /* position: fixed; */
+  z-index: 0;
+}
+
+.app-content {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100%;
+  background: radial-gradient(ellipse at center,
+      white 0.5rem,
+      rgb(0, 0, 0, 0) 40rem);
+}
+
+.app-logo {
+  height: 5rem;
+  margin: 0 auto;
+  display: block;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .app-logo {
+    animation: app-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes app-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.text {
+  display: inline;
+  font-family: system-ui;
+}
+
+.app-link {
+  font-family: system-ui;
+  font-weight: bold;
+  font-size: 16px;
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.flex-horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-12px {
+  gap: 12px;
+}
+
+.gap-4px {
+  gap: 4px;
+}
+
+.green-message {
+  color: green !important;
+}
+
+.description {
+  font-weight: 250;
+  width: 350px;
+  margin-bottom: 6px;
+}
+
+.main {
+  min-width: 372px;
+  display: flex;
+  font-family: system-ui;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 100%;
+}
+
+.header {
+  display: flex;
+  background-color: white;
+  width: 100%;
+  height: 3.5rem;
+  padding: 21px 50px 21px 49px;
+  justify-content: space-between;
+  align-items: center;
+  font-family: system-ui;
+  z-index: 10;
+  position: fixed;
+  font-size: 14px;
+  box-shadow: 0rem 0.0625rem 0rem 0rem rgba(26, 26, 26, 0.07);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.logo {
+  color: #000 !important;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+  text-decoration: none;
+}
+
+.title {
+  font-size: 24px;
+  padding: 10px;
+}
+
+.google-oauth-button {
+  display: flex;
+  padding: 1.8%;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  align-self: stretch;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid lightgray;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 400;
+  max-width: 500px;
+}
+
+.google-oauth-button:hover {
+  background-color: #eee;
+}
+
+.inlineElement {
+  display: flex;
+  gap: 10px;
+}
+
+.signout-button {
+  display: flex;
+  padding: 8px 24px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 4px;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.card-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.card {
+  border-radius: 8px;
+  border: 1px solid #e2e2e2;
+  background-color: #fff;
+  padding: 24px;
+  gap: 16px;
+  color: #000000;
+  position: absolute;
+  top: 50px;
+  width: 500px;
+  right: 457px;
+}
+
+.user-card {
+  flex-basis: 185px;
+}
+
+.card-content {
+  display: flex;
+  text-align: left;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 16px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.icon {
+  border-radius: 100px;
+  width: 72px;
+  height: 72px;
+}
+
+.userData {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  font-weight: 300;
+}
+
+.sm-description {
+  color: #545454;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 12px;
+}
+
+.custom-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  width: 100%;
+  gap: 20px;
+}
+
+.custom-input {
+  font-size: 14px;
+  padding: 4px 12px 4px 12px;
+  border: solid 1px lightgray;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+}
+
+.custom-input:focus {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-button {
+  font-size: 14px;
+  color: #000;
+  background: #eee;
+  padding: 6px 6px 6px 6px;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 200ms;
+  text-decoration: none;
+  width: 150px;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+.format-message::first-letter {
+  text-transform: capitalize;
+}
+
+.primary {
+  color: #fff !important;
+  background: #000;
+}
+
+.custom-button:hover {
+  opacity: 80%;
+  transition: all 200ms;
+}
+
+.form-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 0;
+  padding-bottom: 8;
+}
+
+.bold-text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 18px;
+  background-color: #fff;
+  margin-left: "5px";
+}
+
+.dash {
+  align-self: center;
+  margin: 0px 0px 12px 0;
+}
+
+.sign-up {
+  align-self: center;
+}
+
+.forgot-password {
+  align-self: end;
+  margin-top: -18px;
+}
+
+.forgot-password a {
+  text-decoration: none;
+}
+
+.sign-in-main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(241, 241, 241, 1);
+}
+
+.sign-in-main .card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 35px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+}
+
+.sign-in-main .logo {
+  color: #000 !important;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 40px;
+  text-decoration: none;
+  display: flex;
+  margin: 0 0 0 -4px;
+  align-items: start;
+  justify-content: start;
+}
+
+.sign-in-main .img {
+  height: auto;
+}
+
+/* .sign-in-button {
+  background-color: rgb(98, 37, 240);
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  color: white;
+} */
+
+/* Dashboard CSS */
+.analyticpage .Polaris-Header-Title__TitleWrapper .Polaris-Header-Title {
+  margin-top: -50px !important;
+}
+
+.analyticpage .datepicker {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+  margin: -21px 0 20px 0;
+}
+
+.totalsales h3 {
+  font-size: var(--p-font-size-500);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: 1.5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.totalsales h2 {
+  font-size: var(--p-text-body-sm-font-size);
+  font-weight: var(--p-text-body-sm-font-weight);
+  letter-spacing: var(--p-text-body-sm-font-letter-spacing);
+  line-height: 1.5;
+  border-bottom: 0.125rem dotted var(--p-color-border-tertiary);
+  border-color: var(--p-color-border-tertiary);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+  background: none !important;
+  border-bottom: none !important;
+}
+
+.apexcharts-tooltip {
+  display: flex;
+  flex-direction: row !important;
+}
+
+/* Base button styling */
+.sign-in-button {
+  background: linear-gradient(90deg, #4CAF50, #45a049, #228225, #45a049, #4CAF50);
+  background-size: 200% 200%; /* Extend the background size for the animation */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.4s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  /* Start the animation automatically when the component is rendered */
+  animation: flow-animation 5s linear infinite;
+}
+
+/* Keyframes for the flow animation */
+@keyframes flow-animation {
+  0% {
+    background-position: 0% 25%;
+  }
+  25% {
+    background-position: 25% 75%;
+  }
+  50% {
+    background-position: 75% 100%;
+  }
+  75% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
+

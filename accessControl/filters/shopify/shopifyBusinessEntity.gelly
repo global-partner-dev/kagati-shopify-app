@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyBusinessEntity [
+  where shopId == $session.shopId
+]

@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyDispute [
+  where shopId == $session.shopId
+]

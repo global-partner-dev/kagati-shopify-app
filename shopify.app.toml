@@ -1,0 +1,26 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "7fe7717b599914d6875bd71241b1c700"
+name = "Kaghati V4"
+handle = "kaghati-v4"
+application_url = "https://kaghati-shopify-v4--development.gadget.app/api/shopify/install-or-render"
+embedded = true
+
+[build]
+dev_store_url = "asv-gadget.myshopify.com"
+include_config_on_deploy = true
+
+[auth]
+redirect_urls = [
+  "https://kaghati-shopify-v4--development.gadget.app/api/connections/auth/shopify/callback"
+]
+
+[webhooks]
+api_version = "2024-10"
+
+[pos]
+embedded = false
+
+[access_scopes]
+# These scopes match what is defined in your Gadget Shopify connection
+scopes = "read_orders, write_customers, read_customers, write_orders, write_order_edits, write_third_party_fulfillment_orders, read_third_party_fulfillment_orders, read_themes, write_themes, read_shipping, read_fulfillments, read_products, write_products, read_content, write_content, read_customer_events, read_delivery_customizations, write_delivery_customizations, read_discounts, write_discounts, read_price_rules, write_fulfillments, read_files, write_files, read_inventory, write_inventory, read_locations, read_merchant_managed_fulfillment_orders, write_merchant_managed_fulfillment_orders, read_metaobject_definitions, write_metaobject_definitions, read_metaobjects, write_metaobjects, read_product_listings, read_publications, write_publications, read_purchase_options, write_purchase_options, read_reports, write_reports, read_returns, write_returns, read_script_tags, write_script_tags, write_shipping, write_pixels, write_assigned_fulfillment_orders, read_assigned_fulfillment_orders, read_online_store_navigation, read_order_edits, write_draft_orders, read_draft_orders, read_payment_terms"

@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyDiscountCustomerGetsCollection [
+  where shopId == $session.shopId
+]

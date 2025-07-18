@@ -1,0 +1,4 @@
+fragment Filter($session: Session) on ShopifyBlog {
+  *
+  [where shop.id == $session.shopId]
+}

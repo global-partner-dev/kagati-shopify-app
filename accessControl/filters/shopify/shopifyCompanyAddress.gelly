@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyCompanyAddress [
+  where shopId == $session.shopId
+]

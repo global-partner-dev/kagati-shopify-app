@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyBillingAddress [
+  where shopId == $session.shopId
+]

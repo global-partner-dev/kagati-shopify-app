@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifySubscriptionManualDiscount [
+  where shopId == $session.shopId
+]

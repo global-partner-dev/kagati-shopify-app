@@ -1,0 +1,4 @@
+fragment Filter($session: Session) on ShopifyShippingLine {
+  *
+  [where shop.id == $session.shopId]
+}

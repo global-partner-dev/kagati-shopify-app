@@ -1,0 +1,21 @@
+api_version = "2024-04"
+
+[[extensions]]
+name = "t:name"
+handle = "cart-checkout-validation1"
+type = "function"
+
+description = "t:description"
+
+  [[extensions.targeting]]
+  target = "purchase.validation.run"
+  input_query = "src/run.graphql"
+  export = "run"
+
+  [extensions.build]
+  command = ""
+  path = "dist/function.wasm"
+
+  [extensions.ui.paths]
+  create = "/"
+  details = "/"

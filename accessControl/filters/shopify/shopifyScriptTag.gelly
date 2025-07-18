@@ -1,0 +1,4 @@
+fragment Filter($session: Session) on ShopifyScriptTag {
+  *
+  [where shop.id == $session.shopId]
+}

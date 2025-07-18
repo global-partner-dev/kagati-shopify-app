@@ -1,0 +1,4 @@
+fragment Filter($session: Session) on ShopifyBulkOperation {
+  *
+  [where shop.id == $session.shopId]
+}

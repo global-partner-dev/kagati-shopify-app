@@ -1,0 +1,143 @@
+/* SignedInPage.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General container styling */
+.signed-in-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.app-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.welcome-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.user-info {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.user-image-container {
+  flex-shrink: 0;
+}
+
+.user-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ddd;
+}
+
+.user-details {
+  flex-grow: 1;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-details p {
+  margin: 8px 0;
+  font-size: 1rem;
+}
+
+.actions {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.actions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.actions li {
+  margin: 10px 0;
+}
+
+.actions a {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.actions a:hover {
+  text-decoration: underline;
+}
+
+/* Loading and Error State Styling */
+.loading, .error {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 20px;
+  color: #333;
+}
+
+.error {
+  color: red;
+}
+
+.loading {
+  color: #888;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .user-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .user-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .actions {
+    padding: 15px;
+  }
+
+  .user-details {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .welcome-text {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}

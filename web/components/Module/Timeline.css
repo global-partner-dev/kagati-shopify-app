@@ -1,0 +1,117 @@
+
+.timeline-container{
+    font-family: "Roboto",sans-serif;
+    width:90%;
+    margin:auto;
+    display:block;
+    position:relative;
+  }
+  .timeline-container ul.tl{
+      margin:20px 0;
+      padding:0;
+  }
+  .timeline-container ul.tl li {
+      list-style: none;
+      margin:auto;
+      min-height:40px;
+      border-left:2px solid #E3E3E3;
+      padding:0 0 10px 30px;
+      position:relative;
+      display: flex; 
+      flex-direction: row;
+  }
+  .timeline-container ul.tl li.dashed {
+      border-left:2px dashed #E3E3E3;
+  } 
+  .timeline-container ul.tl li:last-child{ 
+    border-left: 2px solid rgba(0, 0, 0, 0);
+}
+  .timeline-container ul.tl li .item-icon {
+      position: absolute;
+      left: -9.5px;
+      top: -5px;
+      content: " ";
+      border: 4.5px solid rgba(255, 255, 255, 0.74);
+      border-top-left-radius: 40%;
+      border-top-right-radius: 40%;
+      border-bottom-right-radius: 40%;
+      border-bottom-left-radius: 40%;
+      background: #4A4A4A;
+      height: 15px;
+      width: 15px;
+  }
+  .timeline-container ul.tl li:hover::before{
+      border-color:  #258CC7;
+      transition: all 1000ms ease-in-out;
+  }
+  ul.tl li .item-text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  ul.tl li .item-detail {
+      color:rgba(0,0,0,0.5);
+      font-size:12px;
+  }
+  ul.tl li .item-timestamp{
+    color: #525050;
+    font-size: 12px;
+    text-align: right;
+    font-weight: 500;
+    margin-top: -6px;
+  }
+  ul.tl li .item-title {
+    margin-top: -6px;
+  }
+  
+/* Timeline Date */
+  .timeline-date {
+    position: relative;
+    padding: 12px 0;
+    margin-left: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .timeline-date:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #E5E7EB;
+}
+  
+  .date-content {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .date-title {
+    font-weight: 500;
+    font-size: 14px;
+    color: #6B7280;
+    padding-left: 12px;
+  }
+  
+  .date-dashed-line {
+    position: absolute;
+    left: -24px;
+    top: 100%;
+    bottom: -12px; /* Adjust based on your spacing needs */
+    width: 2px;
+    background-image: linear-gradient(
+      to bottom,
+      #E5E7EB 50%,
+      transparent 50%
+    );
+    background-size: 2px 8px;
+    background-repeat: repeat-y;
+  }
+  
+  /* If the date is the last item, hide the dashed line */
+  .timeline-date:last-child .date-dashed-line {
+    display: none;
+  }

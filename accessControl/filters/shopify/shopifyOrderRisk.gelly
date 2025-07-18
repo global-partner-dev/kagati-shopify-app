@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyOrderRisk [
+  where shopId == $session.shopId
+]

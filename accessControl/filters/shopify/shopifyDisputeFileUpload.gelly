@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyDisputeFileUpload [
+  where shopId == $session.shopId
+]

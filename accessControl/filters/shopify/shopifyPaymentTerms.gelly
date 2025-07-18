@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyPaymentTerms [
+  where shop.id == $session.shopId
+]

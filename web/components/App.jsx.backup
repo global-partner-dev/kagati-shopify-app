@@ -1,0 +1,269 @@
+/**
+ * App Component
+ * 
+ * This code represents the main application structure for a Shopify embedded app using the Gadget framework and React.
+ * The application supports both authenticated and unauthenticated user experiences, providing different routes and components
+ * based on the user's authentication status. It also includes error handling, navigation management, and loading states.
+ * 
+ * Components and Features:
+ * - **GadgetProvider**: Wraps the app, providing necessary context for Gadget and Shopify App Bridge.
+ * - **AuthenticatedApp**: Displays the main embedded app for authenticated users, including various pages like products, orders, customers, etc.
+ * - **UnauthenticatedApp**: Handles the routes and pages for users who are not signed in, like sign-in, sign-up, and password reset.
+ * - **ErrorBoundary**: Catches and displays errors in the embedded app.
+ * - **NavigationMenu**: Provides a navigation menu for easy access to different parts of the embedded app.
+ * - **Error404**: Handles undefined routes, displaying a "404 not found" message.
+ * 
+ * @returns {JSX.Element} The main application component.
+ */
+
+import { AppType, Provider as GadgetProvider, useGadget } from "@gadgetinc/react-shopify-app-bridge";
+import { NavigationMenu } from "@shopify/app-bridge-react";
+import { Spinner } from "@shopify/polaris";
+import { useEffect, useMemo } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+
+// Importing route components
+import AboutPage from "../routes/Pages/about";
+import ShopInternalPage from "../routes/Pages/Shop";
+import ProductListPage from "../routes/Pages/Product/List";
+import CustomerListPage from "../routes/Pages/Customer/List";
+import AddProductPage from "../routes/Pages/Product/Add";
+import ProductDetailPage from "../routes/Pages/Product/Detail";
+import OrderListPage from "../routes/Pages/Order/List";
+import AddDraftOrderPage from "../routes/Pages/Order/AddOrder";
+import EditDraftOrderPage from "../routes/Pages/Order/EditOrder";
+import OrderDetailPage from "../routes/Pages/Order/Detail";
+import RefundOrderPage from "../routes/Pages/Order/Refund";
+import OrderSplitDetailPage from "../routes/Pages/Order/SplitDetail";
+import InventoryPage from "../routes/Pages/Inventory";
+import CustomerSupportListPage from "../routes/Pages/CustomerSupport/List";
+import CustomerSupportDetailPage from "../routes/Pages/CustomerSupport/Detail";
+import StoresPage from "../routes/Pages/Store/Stores";
+import UpdateStorePage from '../routes/Pages/Store/UpdateStore';
+import AddStorePage from '../routes/Pages/Store/AddStore';
+import AssignOrdersPage from "../routes/Pages/AssignOrders";
+import ReportsPage from "../routes/Pages/Reports";
+import SettingsPage from "../routes/Pages/Settings";
+import SettingsForm from "../routes/ExternalPages/SettingsForm/SettingsForm";
+import SettingProfile from "../routes/ExternalPages/SettingsForm/Profile";
+import CreateProfile from "../routes/ExternalPages/SettingsForm/CreateProfile";
+import StaffListPage from "../routes/Pages/Staff/List";
+import AddStaffPage from "../routes/Pages/Staff/Add";
+import StaffDetailsPage from "../routes/Pages/Staff/Details";
+import PincodePage from "../routes/Pages/Pincode/pincodes";
+import CustomerDetailPage from "../routes/Pages/Customer/Details";
+import AddPinCodePage from "../routes/Pages/Pincode/AddPincode";
+import EditPinCodePage from "../routes/Pages/Pincode/EditPincode";
+import { api } from "../api";
+import { SignedInOrRedirect, SignedOutOrRedirect } from "@gadgetinc/react";
+import ExternalLayout from "../routes/ExternalPages/Layout";
+import ExternalAboutPage from "../routes/ExternalPages/about";
+import ExternalShopPage from "../routes/ExternalPages/Shop";
+import ExternalIndex from "../routes/ExternalPages/index";
+import ExternalSignedInPage from "../routes/ExternalPages/signed-in";
+import ExternalSignInPage from "../routes/ExternalPages/sign-in";
+import ExternalSignUpPage from "../routes/ExternalPages/sign-up";
+import ExternalResetPasswordPage from "../routes/ExternalPages/reset-password";
+import ExternalVerifyEmailPage from "../routes/ExternalPages/verify-email";
+import ExternalChangePassword from "../routes/ExternalPages/change-password";
+import ExternalForgotPassword from "../routes/ExternalPages/forgot-password";
+import ExternalProductListPage from "../routes/ExternalPages/Product/List";
+import ExternalAddProductPage from "../routes/ExternalPages/Product/Add";
+import ExternalProductDetailPage from "../routes/ExternalPages/Product/Detail";
+import ExternalCustomerListPage from "../routes/ExternalPages/Customer/List";
+import ExternalCustomerDetailPage from "../routes/ExternalPages/Customer/Details";
+import ExternalPincodePage from "../routes/ExternalPages/Pincode/pincodes";
+import ExternalAddPinCodePage from "../routes/ExternalPages/Pincode/AddPincode";
+import ExternalEditPinCodePage from "../routes/ExternalPages/Pincode/EditPincode";
+import ExternalOrderListPage from "../routes/ExternalPages/Order/List";
+import ExternalAddDraftOrderPage from "../routes/ExternalPages/Order/AddOrder";
+import ExternalOrderDetailPage from "../routes/ExternalPages/Order/Detail";
+import ExternalOrderSplitDetailPage from "../routes/ExternalPages/Order/SplitDetail";
+import ExternalEditDraftOrderPage from "../routes/Pages/Order/EditOrder";
+import ExternalRefundOrderPage from "../routes/Pages/Order/Refund";
+import ExternalInventoryPage from "../routes/ExternalPages/Inventory";
+import ExternalStoresPage from "../routes/ExternalPages/Store/Stores";
+import ExternalUpdateStorePage from '../routes/ExternalPages/Store/UpdateStore';
+import ExternalAddStorePage from '../routes/ExternalPages/Store/AddStore';
+import ExternalAssignOrdersPage from "../routes/Pages/AssignOrders";
+import ExternalReportsPage from "../routes/ExternalPages/Reports";
+import ExternalSettingsPage from "../routes/ExternalPages/Settings";
+import ExternalStaffListPage from "../routes/ExternalPages/Staff/List";
+import ExternalAddStaffPage from "../routes/ExternalPages/Staff/Add";
+import ExternalStaffDetailsPage from "../routes/ExternalPages/Staff/Details";
+import ExternalCustomerSupportListPage from "../routes/ExternalPages/CustomerSupport/List";
+import ExternalCustomerSupportDetailPage from "../routes/ExternalPages/CustomerSupport/Detail";
+import "../assets/styles/style.css";
+import DeliveryCustomizations from "../routes/ExternalPages/SettingsForm/DeliveryCustomizations";
+import CreateDeliveryCustomization from "../routes/ExternalPages/SettingsForm/CreateDeliveryCustomization";
+// import Extension from "../../extensions/kaghati-delivery-customization/src/Checkout";
+import DeliveryCustomization from "../routes/app.delivery-customization.$functionId.$id";
+import ErrorBoundary from "./ErrorBoundary";
+
+// Component for handling 404 errors
+const Error404 = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === new URL(process.env.GADGET_PUBLIC_SHOPIFY_APP_URL).pathname)
+      return navigate("/", { replace: true });
+  }, [location.pathname]);
+
+  return <div>404 not found</div>;
+};
+
+// Main application component
+const App = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const history = useMemo(() => ({ replace: (path) => navigate(path, { replace: true }) }), [navigate]);
+
+  const appBridgeRouter = useMemo(
+    () => ({ location, history }),
+    [location, history]
+  );
+
+  return (
+    <GadgetProvider type={AppType.Embedded} shopifyApiKey={window.gadgetConfig.apiKeys.shopify} api={api} router={appBridgeRouter}>
+      <AuthenticatedApp />
+    </GadgetProvider>
+  );
+};
+
+// Component to handle authentication states
+function AuthenticatedApp() {
+  const { isAuthenticated, loading } = useGadget();
+  if (loading) {
+    return (
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%", width: "100%" }}>
+        <Spinner accessibilityLabel="Spinner example" size="large" />
+      </div>
+    );
+  }
+  if (isAuthenticated === null)  {
+    return(
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%", width: "100%" }}>
+        <Spinner accessibilityLabel="Spinner example" size="large" />
+      </div>
+    )
+  }
+
+  if (!isAuthenticated) {
+    return <UnauthenticatedApp />;
+  }
+
+  return <EmbeddedApp />;
+}
+
+// Component for the main embedded app after user authentication
+function EmbeddedApp() {
+  return (
+    <>
+      <ErrorBoundary>
+        <Routes>
+          <Route path="/dashboard" element={<ShopInternalPage />} />
+          <Route path="/" element={<OrderListPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/products" element={<ProductListPage />} />
+          <Route path="/products/new" element={<AddProductPage />} />
+          <Route path="/products/:id" element={<ProductDetailPage />} />
+          <Route path="/customers" element={<CustomerListPage />} />
+          <Route path="/customers/:id" element={<CustomerDetailPage />} />
+          <Route path="/pincodes" element={<PincodePage />} />
+          <Route path="/pincodes/new" element={<AddPinCodePage />} />
+          <Route path="/pincodes/:id" element={<EditPinCodePage />} />
+          <Route path="/orders" element={<OrderListPage />} />
+          <Route path="/orders/:id" element={<OrderDetailPage />} />
+          <Route path="/orders/split/:id/:splitId" element={<OrderSplitDetailPage />} />
+          <Route path="/orders/draft/new" element={<AddDraftOrderPage />} />
+          <Route path="/orders/edit/:id" element={<EditDraftOrderPage />} />
+          <Route path="/orders/refund/:id" element={<RefundOrderPage />} />
+          <Route path="/inventories" element={<InventoryPage />} />
+          <Route path="/customer-support" element={<CustomerSupportListPage />} />
+          <Route path="/customer-support/detail/:id/:splitId" element={<CustomerSupportDetailPage />} />
+          <Route path="/stores" element={<StoresPage />} />
+          <Route path="/stores/:id" element={<UpdateStorePage />} />
+          <Route path="/stores/new" element={<AddStorePage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/shipping" element={<SettingsForm />} />
+          <Route path="/shipping/profiles/:id" element={<SettingProfile />} />
+          <Route path="/shipping/profiles/create" element={<CreateProfile />} />
+          <Route path="/shipping/customizations" element={<DeliveryCustomizations />} />
+          <Route path="/shipping/customizations/create" element={<CreateDeliveryCustomization />} />
+          <Route path="/app/delivery-customization/:functionId/:id" element={<DeliveryCustomization />} />
+          <Route path="/app/delivery-customization/:functionId/new" element={<DeliveryCustomization />} />
+          <Route path="/staffs" element={<StaffListPage />} />
+          <Route path="/staffs/new" element={<AddStaffPage />} />
+          <Route path="/staffs/:id" element={<StaffDetailsPage />} />
+          <Route path="*" element={<Error404 />} />
+        </Routes>
+      </ErrorBoundary>
+      <NavigationMenu
+        navigationLinks={[
+          { label: "Orders", destination: "/orders" },
+          { label: "Inventories", destination: "/inventories" },
+          { label: "Stores", destination: "/stores" },
+          { label: "Pincodes", destination: "/pincodes" },
+          { label: "Staffs", destination: "/staffs" },
+          { label: "Customer Support", destination: "/customer-support" },
+          { label: "Settings", destination: "/settings" },
+          { label: "Shipping Profile", destination: "/shipping" }
+        ]}
+      />
+    </>
+  );
+}
+
+// Component for unauthenticated routes
+function UnauthenticatedApp() {
+  return (
+    <Routes>
+      <Route path="/" element={<ExternalLayout />}>
+        <Route index element={<SignedOutOrRedirect><ExternalIndex /></SignedOutOrRedirect>} />
+        <Route path="/about" element={<ExternalAboutPage />} />
+        <Route path="signed-in" element={<SignedInOrRedirect><ExternalSignedInPage /></SignedInOrRedirect>} />
+        <Route path="change-password" element={<SignedInOrRedirect><ExternalChangePassword /></SignedInOrRedirect>} />
+        <Route path="forgot-password" element={<SignedOutOrRedirect><ExternalForgotPassword /></SignedOutOrRedirect>} />
+        <Route path="sign-in" element={<SignedOutOrRedirect><ExternalSignInPage /></SignedOutOrRedirect>} />
+        <Route path="sign-up" element={<SignedOutOrRedirect><ExternalSignUpPage /></SignedOutOrRedirect>} />
+        <Route path="products" element={<SignedInOrRedirect><ExternalProductListPage /></SignedInOrRedirect>} />
+        <Route path="reset-password" element={<ExternalResetPasswordPage />} />
+        <Route path="verify-email" element={<ExternalVerifyEmailPage />} />
+        <Route path="dashboard" element={<SignedInOrRedirect><ExternalShopPage /></SignedInOrRedirect>} />
+        <Route path="/products/new" element={<SignedInOrRedirect><ExternalAddProductPage /></SignedInOrRedirect>} />
+        <Route path="/products/:id" element={<SignedInOrRedirect><ExternalProductDetailPage /></SignedInOrRedirect>} />
+        <Route path="/customers" element={<SignedInOrRedirect><ExternalCustomerListPage /></SignedInOrRedirect>} />
+        <Route path="/customers/:id" element={<SignedInOrRedirect><ExternalCustomerDetailPage /></SignedInOrRedirect>} />
+        <Route path="/pincodes" element={<SignedInOrRedirect><ExternalPincodePage /></SignedInOrRedirect>} />
+        <Route path="/pincodes/new" element={<SignedInOrRedirect><ExternalAddPinCodePage /></SignedInOrRedirect>} />
+        <Route path="/pincodes/:id" element={<SignedInOrRedirect><ExternalEditPinCodePage /></SignedInOrRedirect>} />
+        <Route path="/orders" element={<SignedInOrRedirect><ExternalOrderListPage /></SignedInOrRedirect>} />
+        <Route path="/orders/:id" element={<SignedInOrRedirect><ExternalOrderDetailPage /></SignedInOrRedirect>} />
+        <Route path="/orders/split/:id/:splitId" element={<SignedInOrRedirect><ExternalOrderSplitDetailPage /></SignedInOrRedirect>} />
+        <Route path="/orders/draft/new" element={<SignedInOrRedirect><ExternalAddDraftOrderPage /></SignedInOrRedirect>} />
+        <Route path="/orders/edit/:id" element={<SignedInOrRedirect><ExternalEditDraftOrderPage /></SignedInOrRedirect>} />
+        <Route path="/orders/refund/:id" element={<SignedInOrRedirect><ExternalRefundOrderPage /></SignedInOrRedirect>} />
+        <Route path="/inventories" element={<SignedInOrRedirect><ExternalInventoryPage /></SignedInOrRedirect>} />
+        <Route path="/stores" element={<SignedInOrRedirect><ExternalStoresPage /></SignedInOrRedirect>} />
+        <Route path="/stores/:id" element={<SignedInOrRedirect><ExternalUpdateStorePage /></SignedInOrRedirect>} />
+        <Route path="/stores/new" element={<SignedInOrRedirect><ExternalAddStorePage /></SignedInOrRedirect>} />
+        <Route path="/assign-orders" element={<SignedInOrRedirect><ExternalAssignOrdersPage /></SignedInOrRedirect>} />
+        <Route path="/reports" element={<SignedInOrRedirect><ExternalReportsPage /></SignedInOrRedirect>} />
+        <Route path="/settings" element={<SignedInOrRedirect><ExternalSettingsPage /></SignedInOrRedirect>} />
+        <Route path="/shipping" element={<SettingsForm />} />
+        <Route path="/shipping/profiles/:id" element={<SettingProfile />} />
+        <Route path="/shipping/profiles/create" element={<CreateProfile />} />
+        <Route path="/shipping/customizations" element={<DeliveryCustomizations />} />
+        <Route path="/staffs" element={<SignedInOrRedirect><ExternalStaffListPage /></SignedInOrRedirect>} />
+        <Route path="/staffs/new" element={<SignedInOrRedirect><ExternalAddStaffPage /></SignedInOrRedirect>} />
+        <Route path="/staffs/:id" element={<SignedInOrRedirect><ExternalStaffDetailsPage /></SignedInOrRedirect>} />
+        <Route path="/customer-support" element={<SignedInOrRedirect><ExternalCustomerSupportListPage /></SignedInOrRedirect>} />
+        <Route path="/customer-support/detail/:id/:splitId" element={<SignedInOrRedirect><ExternalCustomerSupportDetailPage /></SignedInOrRedirect>} />
+        <Route path="*" element={<Error404 />} />
+      </Route>
+    </Routes>
+  );
+}
+
+export default App;

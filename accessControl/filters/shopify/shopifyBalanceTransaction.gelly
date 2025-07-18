@@ -1,0 +1,3 @@
+filter ($session: Session) on ShopifyBalanceTransaction [
+  where shopId == $session.shopId
+]
